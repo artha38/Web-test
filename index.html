@@ -6,7 +6,213 @@
     <title>Portfolio Website</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        .typing-effect::after {
+            content: "|";
+            animation: blink 1s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+        
+        .page {
+            display: none;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+        
+        .page.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .music-player {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+        
+        .music-player:hover {
+            transform: scale(1.1);
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        .music-player.playing i {
+            color: #ff4757;
+            animation: spin 2s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .hamburger-menu {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            cursor: pointer;
+        }
+        
+        .menu-content {
+            position: fixed;
+            top: 0;
+            left: -300px;
+            width: 300px;
+            height: 100vh;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 999;
+            transition: left 0.3s ease;
+            padding: 80px 20px 20px;
+        }
+        
+        .menu-content.active {
+            left: 0;
+        }
+        
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 998;
+            display: none;
+        }
+        
+        .overlay.active {
+            display: block;
+        }
+        
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid white;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+        
+        .project-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 10px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .product-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 10px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .script-image {
+            width: 100%;
+            max-width: 300px;
+            height: 533px;
+            object-fit: cover;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-3px);
+        }
+        
+        .menu-item {
+            padding: 15px;
+            margin: 10px 0;
+            background: rgba(102, 126, 234, 0.1);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .menu-item:hover {
+            background: rgba(102, 126, 234, 0.2);
+            transform: translateX(5px);
+        }
+    </style>
 </head>
 <body class="text-white">
     <!-- Music Player -->
@@ -68,20 +274,29 @@
     <div id="profile" class="page">
         <div class="min-h-screen py-20 px-4">
             <div class="max-w-4xl mx-auto text-center">
-                <img src="https://placehold.co/400x400" alt="Professional portrait" class="profile-image mx-auto mb-6">
+                <img src="https://placehold.co/400x400" alt="Professional portrait of a software developer with modern style and friendly expression" class="profile-image mx-auto mb-6">
                 <h2 class="text-4xl font-bold mb-4">John Developer</h2>
                 <p class="text-xl mb-8 opacity-90">
-                    Passionate Full Stack Developer with 5+ years of experience.
+                    Passionate Full Stack Developer with 5+ years of experience in creating innovative web solutions. 
+                    Specialized in JavaScript, React, Node.js, and modern web technologies.
                 </p>
                 <h3 class="text-2xl font-bold mb-6">My Projects</h3>
                 <div class="grid md:grid-cols-2 gap-6 mb-12">
                     <div class="project-card" onclick="alert('Project 1 Details')">
                         <h4 class="text-xl font-semibold mb-2">E-Commerce Platform</h4>
-                        <p>Modern shopping experience</p>
+                        <p>Modern shopping experience with React and Node.js</p>
                     </div>
                     <div class="project-card" onclick="alert('Project 2 Details')">
                         <h4 class="text-xl font-semibold mb-2">Social Media App</h4>
-                        <p>Real-time messaging</p>
+                        <p>Real-time messaging and content sharing platform</p>
+                    </div>
+                    <div class="project-card" onclick="alert('Project 3 Details')">
+                        <h4 class="text-xl font-semibold mb-2">Task Management</h4>
+                        <p>Productivity app with drag-and-drop interface</p>
+                    </div>
+                    <div class="project-card" onclick="alert('Project 4 Details')">
+                        <h4 class="text-xl font-semibold mb-2">Weather Dashboard</h4>
+                        <p>Real-time weather data visualization</p>
                     </div>
                 </div>
                 <button onclick="navigateTo('home')" class="btn-secondary">
@@ -98,8 +313,27 @@
                 <h2 class="text-4xl font-bold text-center mb-12">My Products</h2>
                 <div class="grid md:grid-cols-2 gap-8">
                     <div class="product-card" onclick="window.open('https://example.com/product1', '_blank')">
-                        <img src="https://placehold.co/400x300" class="w-full h-48 object-cover rounded-lg mb-4">
+                        <img src="https://placehold.co/400x300" alt="Modern web application dashboard with analytics and charts" class="w-full h-48 object-cover rounded-lg mb-4">
                         <h3 class="text-2xl font-semibold mb-2">Web App Template</h3>
+                        <p class="mb-4">Complete React dashboard template with modern design</p>
+                        <span class="btn-primary">View Product</span>
+                    </div>
+                    <div class="product-card" onclick="window.open('https://example.com/product2', '_blank')">
+                        <img src="https://placehold.co/400x300" alt="Mobile application interface design with clean layout" class="w-full h-48 object-cover rounded-lg mb-4">
+                        <h3 class="text-2xl font-semibold mb-2">Mobile UI Kit</h3>
+                        <p class="mb-4">Beautiful mobile app interface components</p>
+                        <span class="btn-primary">View Product</span>
+                    </div>
+                    <div class="product-card" onclick="window.open('https://example.com/product3', '_blank')">
+                        <img src="https://placehold.co/400x300" alt="E-commerce website design with product listings and shopping cart" class="w-full h-48 object-cover rounded-lg mb-4">
+                        <h3 class="text-2xl font-semibold mb-2">E-Commerce Theme</h3>
+                        <p class="mb-4">Responsive online store template</p>
+                        <span class="btn-primary">View Product</span>
+                    </div>
+                    <div class="product-card" onclick="window.open('https://example.com/product4', '_blank')">
+                        <img src="https://placehold.co/400x300" alt="Portfolio website design with modern layout and animations" class="w-full h-48 object-cover rounded-lg mb-4">
+                        <h3 class="text-2xl font-semibold mb-2">Portfolio Template</h3>
+                        <p class="mb-4">Professional portfolio website design</p>
                         <span class="btn-primary">View Product</span>
                     </div>
                 </div>
@@ -117,16 +351,115 @@
         <div class="min-h-screen py-20 px-4">
             <div class="max-w-4xl mx-auto text-center">
                 <h2 class="text-4xl font-bold mb-8">Free Script</h2>
-                <a href="https://www.mediafire.com/" target="_blank" class="btn-primary">
-                    <i class="fas fa-download mr-2"></i> Get Script Now
-                </a>
-                <button onclick="navigateTo('home')" class="btn-secondary mt-6">
+                <img src="https://placehold.co/300x533" alt="Script code preview showing modern JavaScript syntax with comments and documentation" class="script-image mx-auto mb-8">
+                <div class="bg-white/10 backdrop-blur-md rounded-2xl p-8 mb-8">
+                    <h3 class="text-2xl font-semibold mb-4">Advanced JavaScript Utility Library</h3>
+                    <p class="text-lg mb-6">
+                        This free script includes powerful utility functions for modern web development. 
+                        Features include DOM manipulation helpers, animation utilities, form validation, 
+                        and responsive design helpers. Perfect for beginners and experienced developers alike.
+                    </p>
+                    <p class="text-sm opacity-80 mb-4">
+                        Version 2.1.0 | MIT License | Updated: December 2023
+                    </p>
+                    <a href="https://www.mediafire.com/" target="_blank" class="btn-primary">
+                        <i class="fas fa-download mr-2"></i> Get Script Now
+                    </a>
+                </div>
+                <button onclick="navigateTo('home')" class="btn-secondary">
                     <i class="fas fa-arrow-left mr-2"></i> Back to Home
                 </button>
             </div>
         </div>
     </div>
 
-    <script src="js/script.js"></script>
+    <script>
+        // Typing Effect
+        const typingText = document.getElementById('typingText');
+        const text = "Selamat datang di portfolio saya! Saya seorang developer yang passionate tentang teknologi dan kreativitas. Mari jelajahi karya-karya saya...";
+        let index = 0;
+        
+        function typeWriter() {
+            if (index < text.length) {
+                typingText.innerHTML = text.substring(0, index + 1);
+                index++;
+                setTimeout(typeWriter, 50);
+            } else {
+                typingText.classList.remove('typing-effect');
+            }
+        }
+        
+        // Music Player
+        const musicPlayer = document.getElementById('musicPlayer');
+        const backgroundMusic = document.getElementById('backgroundMusic');
+        let isPlaying = false;
+        
+        musicPlayer.addEventListener('click', function() {
+            if (isPlaying) {
+                backgroundMusic.pause();
+                musicPlayer.classList.remove('playing');
+                musicPlayer.innerHTML = '<i class="fas fa-music"></i>';
+            } else {
+                backgroundMusic.play();
+                musicPlayer.classList.add('playing');
+                musicPlayer.innerHTML = '<i class="fas fa-pause"></i>';
+            }
+            isPlaying = !isPlaying;
+        });
+        
+        // Hamburger Menu
+        const hamburgerMenu = document.getElementById('hamburgerMenu');
+        const menuContent = document.getElementById('menuContent');
+        const overlay = document.getElementById('overlay');
+        
+        hamburgerMenu.addEventListener('click', function() {
+            menuContent.classList.toggle('active');
+            overlay.classList.toggle('active');
+        });
+        
+        overlay.addEventListener('click', function() {
+            menuContent.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+        
+        // Navigation
+        function navigateTo(pageId) {
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Show selected page
+            document.getElementById(pageId).classList.add('active');
+            
+            // Close menu if open
+            menuContent.classList.remove('active');
+            overlay.classList.remove('active');
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+            
+            // Reset typing effect if going to home
+            if (pageId === 'home') {
+                index = 0;
+                typingText.classList.add('typing-effect');
+                typeWriter();
+            }
+        }
+        
+        // Initialize typing effect
+        window.addEventListener('load', function() {
+            typeWriter();
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!menuContent.contains(event.target) && !hamburgerMenu.contains(event.target)) {
+                menuContent.classList.remove('active');
+                overlay.classList.remove('active');
+            }
+        });
+    </script>
 </body>
 </html>
+
