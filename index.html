@@ -211,62 +211,7 @@
         .menu-item:hover {
             background: rgba(102, 126, 234, 0.2);
             transform: translateX(5px);
-        }
-    </style>
-       <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#0070f3',
-                        secondary: '#7928ca',
-                        dark: '#111111',
-                        light: '#fafafa'
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif']
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            scroll-behavior: smooth;
-        }
-        
-        .gradient-text {
-            background: linear-gradient(135deg, #0070f3, #7928ca);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .gradient-bg {
-            background: linear-gradient(135deg, #0070f3, #7928ca);
-        }
-        
-        .card-hover {
-            transition: all 0.3s ease;
-        }
-        
-        .card-hover:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-        }
-        
-        .typewriter {
-            overflow: hidden;
-            border-right: .15em solid #0070f3;
-            white-space: nowrap;
-            animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
-        }
-        
-        @keyframes typing {
-            from { width: 0 }
-            to { width: 100% }
-        }
+       
         
         @keyframes blink-caret {
             from, to { border-color: transparent }
@@ -342,19 +287,14 @@
     
     <!-- Profile Page -->
     <div id="profile" class="page">
-          <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div class="text-center md:text-left">
-                    <h1 class="text-4xl md:text-6xl font-bold mb-6">
-                        Hi, I'm <span class="gradient-text">Arthazy</span>
-                    </h1>
-                    <div class="typewriter-container mb-6">
-                        <p class="text-xl md:text-2xl typewriter">Full Stack Developer & UI/UX Enthusiast</p>
-                    </div>
-                    <p class="text-gray-600 dark:text-gray-300 text-lg mb-8">
-                        Passionate about creating beautiful, functional, and user-centric digital experiences. 
-                        I love turning complex problems into simple, elegant solutions.
-                    </p>
+        <div class="min-h-screen py-20 px-4">
+            <div class="max-w-4xl mx-auto text-center">
+                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/2672154f-c341-418a-bef2-430256c1ad5a.png" alt="Professional portrait of a software developer with modern style and friendly expression" class="profile-image mx-auto mb-6">
+                <h2 class="text-4xl font-bold mb-4">John Developer</h2>
+                <p class="text-xl mb-8 opacity-90">
+                    Passionate Full Stack Developer with 5+ years of experience in creating innovative web solutions. 
+                    Specialized in JavaScript, React, Node.js, and modern web technologies.
+                </p>
                     <div class="flex flex-wrap gap-4 justify-center md:justify-start">
                         <a href="#projects" class="px-8 py-3 gradient-bg text-white rounded-full font-semibold hover:shadow-lg transition-shadow">
                             View Work
@@ -380,11 +320,9 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-
+    </div>
     <!-- About Section -->
-    <section id="about" class="py-20 bg-white dark:bg-gray-900">
+    <div id="about" class="py-20 bg-white dark:bg-gray-900">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold mb-4">About Me</h2>
@@ -443,10 +381,10 @@
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
     <!-- Skills Section -->
-    <section id="skills" class="py-20 bg-gray-50 dark:bg-gray-800">
+    <div id="skills" class="py-20 bg-gray-50 dark:bg-gray-800">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold mb-4">Skills & Technologies</h2>
@@ -592,14 +530,10 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects" class="py-20 bg-white dark:bg-gray-900">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
+                   <!-- Projects Section -->
+               <div id="projects" class="py-20 bg-white dark:bg-gray-900">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold mb-4">Featured Projects</h2>
                 <div class="w-24 h-1 gradient-bg mx-auto mb-8"></div>
                 <p class="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
@@ -682,10 +616,10 @@
                 </a>
             </div>
         </div>
-    </section>
+    </div>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-20 bg-gray-50 dark:bg-gray-800">
+    <div id="contact" class="py-20 bg-gray-50 dark:bg-gray-800">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold mb-4">Get In Touch</h2>
@@ -775,7 +709,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
     <!-- Footer -->
     <footer class="bg-dark text-white py-12">
