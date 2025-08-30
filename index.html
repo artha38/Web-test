@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Website</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="text-white">
+    <!-- Music Player -->
+    <div class="music-player" id="musicPlayer">
+        <i class="fas fa-music"></i>
+        <audio id="backgroundMusic" loop>
+            <source src="https://assets.mixkit.co/music/preview/mixkit-tech-house-vibes-130.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+    
+    <!-- Hamburger Menu -->
+    <div class="hamburger-menu" id="hamburgerMenu">
+        <i class="fas fa-bars text-2xl" style="color: white;"></i>
+    </div>
+    
+    <!-- Menu Content -->
+    <div class="menu-content" id="menuContent">
+        <div class="menu-item" onclick="navigateTo('home')">
+            <i class="fas fa-home"></i> Home
+        </div>
+        <div class="menu-item" onclick="navigateTo('profile')">
+            <i class="fas fa-user"></i> My Profile
+        </div>
+        <div class="menu-item" onclick="navigateTo('products')">
+            <i class="fas fa-shopping-bag"></i> My Products
+        </div>
+        <div class="menu-item" onclick="navigateTo('scripts')">
+            <i class="fas fa-code"></i> Free Script
+        </div>
+    </div>
+    
+    <!-- Overlay -->
+    <div class="overlay" id="overlay"></div>
+    
+    <!-- Home Page -->
+    <div id="home" class="page active">
+        <div class="min-h-screen flex items-center justify-center px-4">
+            <div class="text-center max-w-4xl">
+                <h1 class="text-5xl md:text-7xl font-bold mb-6">
+                    Welcome to My <span class="text-yellow-300">World</span>
+                </h1>
+                <p class="text-xl md:text-2xl mb-8 typing-effect" id="typingText"></p>
+                <div class="flex flex-col md:flex-row gap-4 justify-center mt-12">
+                    <button onclick="navigateTo('profile')" class="btn-primary">
+                        <i class="fas fa-user mr-2"></i> My Profile
+                    </button>
+                    <button onclick="navigateTo('products')" class="btn-secondary">
+                        <i class="fas fa-shopping-bag mr-2"></i> My Products
+                    </button>
+                    <button onclick="navigateTo('scripts')" class="btn-primary">
+                        <i class="fas fa-code mr-2"></i> My Script
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Profile Page -->
+    <div id="profile" class="page">
+        <div class="min-h-screen py-20 px-4">
+            <div class="max-w-4xl mx-auto text-center">
+                <img src="https://placehold.co/400x400" alt="Professional portrait" class="profile-image mx-auto mb-6">
+                <h2 class="text-4xl font-bold mb-4">John Developer</h2>
+                <p class="text-xl mb-8 opacity-90">
+                    Passionate Full Stack Developer with 5+ years of experience.
+                </p>
+                <h3 class="text-2xl font-bold mb-6">My Projects</h3>
+                <div class="grid md:grid-cols-2 gap-6 mb-12">
+                    <div class="project-card" onclick="alert('Project 1 Details')">
+                        <h4 class="text-xl font-semibold mb-2">E-Commerce Platform</h4>
+                        <p>Modern shopping experience</p>
+                    </div>
+                    <div class="project-card" onclick="alert('Project 2 Details')">
+                        <h4 class="text-xl font-semibold mb-2">Social Media App</h4>
+                        <p>Real-time messaging</p>
+                    </div>
+                </div>
+                <button onclick="navigateTo('home')" class="btn-secondary">
+                    <i class="fas fa-arrow-left mr-2"></i> Back to Home
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Products Page -->
+    <div id="products" class="page">
+        <div class="min-h-screen py-20 px-4">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-4xl font-bold text-center mb-12">My Products</h2>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="product-card" onclick="window.open('https://example.com/product1', '_blank')">
+                        <img src="https://placehold.co/400x300" class="w-full h-48 object-cover rounded-lg mb-4">
+                        <h3 class="text-2xl font-semibold mb-2">Web App Template</h3>
+                        <span class="btn-primary">View Product</span>
+                    </div>
+                </div>
+                <div class="text-center mt-12">
+                    <button onclick="navigateTo('home')" class="btn-secondary">
+                        <i class="fas fa-arrow-left mr-2"></i> Back to Home
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Scripts Page -->
+    <div id="scripts" class="page">
+        <div class="min-h-screen py-20 px-4">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-4xl font-bold mb-8">Free Script</h2>
+                <a href="https://www.mediafire.com/" target="_blank" class="btn-primary">
+                    <i class="fas fa-download mr-2"></i> Get Script Now
+                </a>
+                <button onclick="navigateTo('home')" class="btn-secondary mt-6">
+                    <i class="fas fa-arrow-left mr-2"></i> Back to Home
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
